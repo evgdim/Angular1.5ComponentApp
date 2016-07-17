@@ -17,18 +17,3 @@ angular.module('app', ['ngComponentRouter','heroes','villians'])
         ]
 });
 
-angular.module('heroes', [])
-.component('heroes', {
-  template: '<h2>Heroes</h2>',
-  controller: function(){
-
-  }
-});
-
-angular.module('villians', [])
-.component('villians', {
-  template: '<h2>villians</h2>',
-  controller: function(){
-
-  }
-});
