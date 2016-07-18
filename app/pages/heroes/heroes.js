@@ -1,13 +1,10 @@
-angular.module('heroes', ['heroService'])
-.component('heroes', {
-  templateUrl: 'app/pages/heroes/heroes.html',
-  bindings:{
-      'name': '<',
-      'age': '@'
-  },
-  controller: function(heroServiceFactory){
-      this.heroes = heroServiceFactory.getAllHeroes();
-      this.name = 'asd';
-      this.age = 15;
-  }
-});
+(function(){
+    angular.module('heroes', ['heroesList', 'heroesDetails'])
+    .component('heroes', {
+    templateUrl: 'app/pages/heroes/heroes.html',
+    $routeConfig: [
+            {path: '/', name: 'HeroList', component: 'heroList', useAsDefault: true},
+            {path: '/:id', name: 'HeroDetails', component: 'heroDetails'},
+        ]
+    });
+}());

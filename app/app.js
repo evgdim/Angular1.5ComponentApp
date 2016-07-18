@@ -4,15 +4,9 @@ angular.module('app', ['ngComponentRouter','heroes','villians'])
     })
     .value('$routerRootComponent', 'app')
     .component('app', {
-        template:
-            '<nav>\n' +
-            '  <a>Crisis Center</a>\n' +
-            '  <a ng-link="[\'Heroes\']">Heroes</a>\n' +
-            '  <a ng-link="[\'Villians\']">Villians</a>\n' +
-            '</nav>\n' +
-            '<ng-outlet></ng-outlet>\n',
+        templateUrl:'app/app.html',
         $routeConfig: [
-            {path: '/heroes', name: 'Heroes', component: 'heroes'},
+            {path: '/heroes', name: 'Heroes', component: 'heroes', useAsDefault: true},
             {path: '/villians', name: 'Villians', component: 'villians'},
         ]
 });

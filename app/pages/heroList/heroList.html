@@ -1,0 +1,4 @@
+HeroList
+<div ng-repeat="hero in $ctrl.heroes">
+      <a ng-link="['HeroDetails', {id: hero.id}]">{{hero.name}}</a>
+</div>

@@ -1,9 +1,10 @@
-<h2>Heroes asd</h2>
-{{$ctrl.name}}
-
-<input type="text" ng-model="$ctrl.age"/>
-{{$ctrl.age}}
-
-<div ng-repeat="h in $ctrl.heroes">
-    {{h}}
+<h1>Heroes</h1>
+<div class="row">
+    <ul class="nav navbar-nav">
+        <li><a ng-link="['HeroList']">List</a></li>
+        <li><a ng-link="['HeroDetails', {id: 1}]">Details</a></li>
+    </ul>
+</div>
+<div class="row">
+    <ng-outlet></ng-outlet>
 </div>

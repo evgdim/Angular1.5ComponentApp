@@ -1,17 +1,22 @@
 <html>
     <head>
         <base href="/">
+        <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     </head>
     <body ng-app="app">
-        <h1 class="title">Component Router</h1>
         <app></app>
         <script src="/node_modules/angular/angular.js"></script>
         <script src="/node_modules/@angular/router/angular1/angular_1_router.js"></script>
+        <script src="/node_modules/jquery/dist/jquery.js"></script>
+        <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>      
         <script src="/app/app.js"></script>
 
         <!-- pages -->
+        <script src="/app/pages/heroDetails/heroDetails.js"></script>
+        <script src="/app/pages/heroList/heroList.js"></script>
         <script src="/app/pages/heroes/heroes.js"></script>
         <script src="/app/pages/villians/villians.js"></script>
+        
 
         <!-- services -->
         <script src="/app/services/heroService.js"></script>
