@@ -1,7 +1,9 @@
-angular.module('heroesDetails', [])
-.component('heroDetails', {
-templateUrl: 'app/pages/heroDetails/heroDetails.html',
-controller: function(){
-    
-}
-});
+(function(){
+    angular.module('heroesDetails', [])
+        .component('heroDetails', {
+            templateUrl: 'app/pages/heroDetails/heroDetails.html',
+            controller: function(){
+                
+            }
+        });
+}());
