@@ -1,4 +1,4 @@
-(function(){
+
     angular.module('heroes', ['heroesList', 'heroesDetails'])
     .component('heroes', {
     templateUrl: 'app/pages/heroes/heroes.html',
@@ -7,4 +7,4 @@
             {path: '/:id', name: 'HeroDetails', component: 'heroDetails'},
         ]
     });
-}());
+

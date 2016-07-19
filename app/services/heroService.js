@@ -1,4 +1,4 @@
-(function(){
+
     angular.module('heroService',[])
     .factory('heroServiceFactory', function() {
         return {
@@ -11,4 +11,4 @@
             }
         };
     });
-}())
+

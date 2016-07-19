@@ -1,4 +1,4 @@
-(function(){
+
     angular.module('heroesList', ['heroService'])
     .component('heroList', {
     templateUrl: 'app/pages/heroList/heroList.html',
@@ -6,4 +6,3 @@
         this.heroes = heroServiceFactory.getAllHeroes();
     }
     });
-}());
