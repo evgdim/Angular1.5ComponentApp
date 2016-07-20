@@ -1,6 +1,6 @@
 (function(){
     angular.module('heroService',['app.config'])
-    .factory('heroServiceFactory', ['__env',function(__env) {
+    .factory('heroServiceFactory', ['__env', '$http',function(__env, $http) {
         return {
             getAllHeroes: function(){
                 console.log('[heroService::getAllHeroes]' + __env.apiUrl);
@@ -9,6 +9,9 @@
                             {name:'b', id: 2},
                             {name:'c', id: 3}
                         ];
+            },
+            user: function(success, error){
+                $http.get(__env.apiUrl + '/user', success, error);
             }
         };
     }]);

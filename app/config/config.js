@@ -9,4 +9,4 @@
     }
 
     config.constant('__env', __env);
-}(window))
+}(window));
