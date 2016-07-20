@@ -14,7 +14,8 @@
     "angular": "^1.5.7",
     "bootstrap": "^3.3.6",
     "jquery": "^2.x.x",
-    "ng-storage": "^0.3.2"
+    "ng-storage": "^0.3.2",
+    "rx": "^4.1.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

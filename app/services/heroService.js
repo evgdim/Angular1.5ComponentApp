@@ -10,8 +10,10 @@
                             {name:'c', id: 3}
                         ];
             },
-            user: function(success, error){
-                $http.get(__env.apiUrl + '/user', success, error);
+            user: function(){
+                return Rx.Observable.fromPromise(
+                            $http.get(__env.apiUrl + '/user')
+                        );
             }
         };
     }]);

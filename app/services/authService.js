@@ -1,6 +1,16 @@
 (function(){
     angular.module('auth',['app.config'])
     .factory('authService',['$http','__env', function($http,__env){
+        var currentUser;
+        var getCurrentUser = function(accessToken){
+            $http({
+                        method: 'GET',
+                        url: __env.apiUrl + '/user',
+                        headers: {"authorization": "Bearer " + accessToken}
+                    }).success(function(user){
+                        currentUser = user;
+                    });
+        };
         return {
             authenticate: function(data, success, error) {
                 var headers = {
@@ -17,7 +27,6 @@
                     "client_secret": "123456",
                     "client_id": "clientapp"
                 };
-                //$http.post(__env.apiUrl + '/oauth/token', { headers: headers, data: body }).success(success).error(error);
 
                 $http({
                         method: 'POST',
@@ -30,8 +39,12 @@
                             return str.join("&");
                         },
                         data: body
-                    }).success(success).error(error);
-            }
+                    }).success(function(data){
+                        getCurrentUser(data.access_token);
+                        success(data);
+                    }).error(error);
+            },
+            currentUser: function(){ return currentUser; }
         };
     }]);
 }());

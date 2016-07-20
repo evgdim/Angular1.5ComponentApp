@@ -1,21 +1,20 @@
 (function(){
     var heroCtrl = function(heroServiceFactory){
                             this.heroes = heroServiceFactory.getAllHeroes();
-                            this.user = heroServiceFactory.user(
-                                    function(data){
-                                        console.log(data);
-                                    },
-                                    function(err){
-                                        console.log(err);
-                                    }
-                            );
+                            this.user = heroServiceFactory.user()
+                            .subscribe(function(x){console.log("[rx] "+JSON.stringify(x))})
+                            
                         }
     heroCtrl.$inject = ['heroServiceFactory'];
     
-    angular.module('heroesList', ['heroService'])
+    angular.module('heroesList', ['heroService', 'auth'])
         .component('heroList', {
             templateUrl: 'app/pages/heroList/heroList.html',
-            controller: heroCtrl            
+            controller: heroCtrl,
+            $canActivate: function(authService){
+                console.log('[canActivate] '+ authService.currentUser());
+                return true;
+            }            
         });
         
 }());
