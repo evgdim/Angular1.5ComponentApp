@@ -2,7 +2,7 @@
     var heroCtrl = function(heroServiceFactory){
                             this.heroes = heroServiceFactory.getAllHeroes();
                             this.user = heroServiceFactory.user()
-                            .subscribe(function(x){console.log("[rx] "+JSON.stringify(x))})
+                            .subscribe(function(x){console.log("[rx] "+x.data.name)})
                             
                         }
     heroCtrl.$inject = ['heroServiceFactory'];
