@@ -2,6 +2,7 @@
     'use strict';
     angular.module('auth',['app.config'])
     .factory('authService',['$http','__env','$localStorage', function($http,__env, $localStorage){
+        var token;
         var authenticate = function(data, success, error) {
                 var headers = {
                                 'accept': 'application/json', 
@@ -32,18 +33,22 @@
                 })
                 .success(function(resp){
                     $localStorage.token = resp.access_token;
+                    token = resp.access_token;
                     success(resp);
                 }).error(function(err){
                     $localStorage.token = null;
+                    token = null;
                     error(err);
                 });
             };
             var logout = function(){
                 $localStorage.token = null;
+                token = null;
             }
         return {
             authenticate: authenticate,
-            logout: logout
+            logout: logout,
+            getToken: function(){ return token; }
         };
     }]);
 })();
