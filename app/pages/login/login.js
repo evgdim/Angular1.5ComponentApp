@@ -12,16 +12,6 @@
                     }, function(err){
                         vm.showErrorMessage = true;
                     });
-                   
-                        // function(data){    
-                        //     $localStorage.token = data.access_token;
-                        //     console.log('ok ' + $localStorage.token);
-                        //     $location.path('/home');
-                        // },
-                        // function(err){
-                        //     $localStorage.token = null;
-                        //     vm.showErrorMessage = true;
-                        // })
                 }
             };
     authCtrl.$inject = ['authService', '$location', '$localStorage'];

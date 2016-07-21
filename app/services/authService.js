@@ -1,8 +1,9 @@
 (function(){
     'use strict';
     angular.module('auth',['app.config'])
-    .factory('authService',['$http','__env','$localStorage', function($http,__env, $localStorage){
+    .factory('authService',['$http','__env', function($http,__env){
         var token;
+        var user;
         var authenticate = function(data, success, error) {
                 var headers = {
                                 'accept': 'application/json', 
@@ -32,23 +33,30 @@
                     data: body
                 })
                 .success(function(resp){
-                    $localStorage.token = resp.access_token;
                     token = resp.access_token;
-                    success(resp);
+                    $http({
+                        method: 'GET',
+                        url: __env.apiUrl + '/user'
+                    }).success(function(resp){
+                        console.log(resp);
+                        user = resp;
+                        success(resp);
+                    }).error(function(err){
+                        error(err);
+                    });   
                 }).error(function(err){
-                    $localStorage.token = null;
                     token = null;
                     error(err);
                 });
             };
             var logout = function(){
-                $localStorage.token = null;
                 token = null;
             }
         return {
             authenticate: authenticate,
             logout: logout,
-            getToken: function(){ return token; }
+            getToken: function(){ return token; },
+            getUser: function(){ return user; }
         };
     }]);
 })();
