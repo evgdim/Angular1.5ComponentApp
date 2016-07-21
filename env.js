@@ -1,4 +1,5 @@
 (function (window) {
+  'use strict';
   window.__env = window.__env || {};
 
   // API url
@@ -6,4 +7,4 @@
 
   // Base url
   window.__env.baseUrl = '/';
-}(this));
+})(this);

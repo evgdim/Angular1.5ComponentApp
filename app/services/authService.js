@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
     angular.module('auth',['app.config'])
     .factory('authService',['$http','__env', function($http,__env){
         var currentUser;
@@ -47,4 +48,4 @@
             currentUser: function(){ return currentUser; }
         };
     }]);
-}());
+})();

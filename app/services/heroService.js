@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
     angular.module('heroService',['app.config'])
     .factory('heroServiceFactory', ['__env', '$http',function(__env, $http) {
         return {
@@ -17,6 +18,6 @@
             }
         };
     }]);
-}());
+})();
     
 

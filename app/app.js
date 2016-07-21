@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
     angular.module('app', ['ngComponentRouter','heroes','villians','login'])
         .config(['$locationProvider','$httpProvider',function($locationProvider, $httpProvider) {
             $locationProvider.html5Mode(true);
@@ -24,12 +25,12 @@
         .component('app', {
             templateUrl:'app/app.html',
             $routeConfig: [
-                {path: '/heroes', name: 'Heroes', component: 'heroes', useAsDefault: true},
-                {path: '/villians', name: 'Villians', component: 'villians'},
-                {path: '/login', name: 'Login', component: 'login'}
+                {path: '/login', name: 'Login', component: 'login', useAsDefault: true},
+                {path: '/heroes', name: 'Heroes', component: 'heroes'},
+                {path: '/villians', name: 'Villians', component: 'villians'}               
             ]
             
         });
-}());
+})();
 
 

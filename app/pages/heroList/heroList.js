@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
     var heroCtrl = function(heroServiceFactory){
                             this.heroes = heroServiceFactory.getAllHeroes();
                             this.user = heroServiceFactory.user()
@@ -17,5 +18,5 @@
             }            
         });
         
-}());
+})();
     

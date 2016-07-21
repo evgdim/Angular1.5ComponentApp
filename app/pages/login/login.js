@@ -1,4 +1,5 @@
 (function(){
+    'use strict';
     var authCtrl = function(authService, $location, $localStorage){
                 this.username;
                 this.password;
@@ -20,4 +21,4 @@
             templateUrl: 'app/pages/login/login.html',
             controller: authCtrl
         });
-}());
+})();
