@@ -1,3 +1,18 @@
-<input type="text" name="username" ng-model="$ctrl.username"/>
-<input type="text" name="password" ng-model="$ctrl.password"/>
-<button ng-click="$ctrl.login()">Login</button>
+<div class="inputs">
+    <div class="alert alert-dismissible alert-danger" ng-if="$ctrl.showErrorMessage">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Username or password not valid</strong>
+        Try again.
+    </div>
+    <div class="form-group form-group-lg label-floating">
+        <label for="username" class="control-label">Username</label>
+        <input type="text" name="username" class="form-control" ng-model="$ctrl.username" id="username"/>
+    </div>
+    <div class="form-group form-group-lg label-floating">
+        <label for="password" class="control-label">Password</label>
+        <input type="password" name="password" class="form-control" ng-model="$ctrl.password" id="password"/>
+    </div>
+
+    <button ng-click="$ctrl.login()" class="btn btn-raised btn-primary">Login</button>
+</div>
+

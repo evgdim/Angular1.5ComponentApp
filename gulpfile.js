@@ -23,8 +23,8 @@ gulp.task('lint', function() {
  
 // Watch Files For Changes
  gulp.task('watch', function() {
-     gulp.watch('app/**/*.js', ['lint', 'scripts']);
+     gulp.watch('app/**/*.*', ['lint', 'scripts']);
  });
 
 // Default Task
-gulp.task('default', ['lint', 'scripts']);
+gulp.task('default', ['lint', 'scripts','watch']);

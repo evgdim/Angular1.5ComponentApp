@@ -1,18 +1,27 @@
 (function(){
     'use strict';
     var authCtrl = function(authService, $location, $localStorage){
+                var vm = this;
                 this.username;
                 this.password;
+                this.showErrorMessage;
                 this.login = function(){
                     authService.authenticate({username: this.username, password: this.password }, 
-                        function(data){    
-                            $localStorage.token = data.access_token;
-                            console.log('ok ' + $localStorage.token);
-                        },
-                        function(err){
-                            console.log('err');
-                            $localStorage.token = null;
-                        });
+                    function(resp){
+                        $location.path('/home');
+                    }, function(err){
+                        vm.showErrorMessage = true;
+                    });
+                   
+                        // function(data){    
+                        //     $localStorage.token = data.access_token;
+                        //     console.log('ok ' + $localStorage.token);
+                        //     $location.path('/home');
+                        // },
+                        // function(err){
+                        //     $localStorage.token = null;
+                        //     vm.showErrorMessage = true;
+                        // })
                 }
             };
     authCtrl.$inject = ['authService', '$location', '$localStorage'];

@@ -13,7 +13,6 @@
             templateUrl: 'app/pages/heroList/heroList.html',
             controller: heroCtrl,
             $canActivate: function(authService){
-                console.log('[canActivate] '+ authService.currentUser());
                 return true;
             }            
         });
