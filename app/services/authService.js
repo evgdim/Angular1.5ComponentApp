@@ -1,7 +1,7 @@
 (function(){
     'use strict';
     angular.module('auth',['app.config'])
-    .factory('authService',['$http','__env', function($http,__env){
+    .factory('authService',['$http','__env','$localStorage', function($http,__env,$localStorage){
         var token;
         var user;
         var authenticate = function(data, success, error) {
@@ -19,8 +19,7 @@
                     "client_secret": "123456",
                     "client_id": "clientapp"
                 };
-
-                $http({
+                var getTokenOptions = {
                     method: 'POST',
                     url: __env.apiUrl + '/oauth/token',
                     headers: headers,
@@ -31,23 +30,27 @@
                         return str.join("&");
                     },
                     data: body
-                })
-                .success(function(resp){
-                    token = resp.access_token;
-                    $http({
-                        method: 'GET',
-                        url: __env.apiUrl + '/user'
-                    }).success(function(resp){
-                        console.log(resp);
-                        user = resp;
-                        success(resp);
+                };
+                var getUserOptions = {
+                    method: 'GET',
+                    url: __env.apiUrl + '/user'
+                };
+                $http(getTokenOptions)
+                    .success(function(resp){
+                        token = resp.access_token;
+                        $localStorage.token = resp.access_token;
+                        $http(getUserOptions)
+                            .success(function(resp){
+                                console.log(resp);
+                                user = resp;
+                                success(resp);
+                            }).error(function(err){
+                                error(err);
+                            });   
                     }).error(function(err){
+                        token = null;
                         error(err);
-                    });   
-                }).error(function(err){
-                    token = null;
-                    error(err);
-                });
+                    });
             };
             var logout = function(){
                 token = null;
